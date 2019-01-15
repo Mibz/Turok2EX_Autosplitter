@@ -33,6 +33,12 @@ split
 {
 	return (current.level == vars.hub && old.level != vars.hub); 
 
+/* HUNDO SPLITS
+split on leaving oblivion lairs, each is visited once so use hub split method
+later keey splits involve travelling from specific levels,need exact pattern to split for
+these travels are not in any% so splits will work on either category
+*/
+
 	/*
 	if(old.level == vars.primagenBoss && current.level == vars.primagenBoss)
 	{
