@@ -19,6 +19,9 @@ init
 	vars.hub = "ls/HUB.map"; // the hub map
 	vars.primagenBoss = "ls/Primagen_Boss.map"; // the final boss fight map
 	
+	// repeat for each lair
+	// vars.oblivionLairNUMBER = "ls/something"; 
+	
 	// vars.primagenPhase = 0;
 }
 
@@ -31,7 +34,13 @@ start
 
 split
 {
-	return (current.level == vars.hub && old.level != vars.hub); 
+	return (current.level == vars.hub && old.level != vars.hub);
+	
+	// repeat for each lair, check map names in source 
+	// || old.level == vars.oblivionLairNUMBER && current.level != vars.oblivionLairNUMBER
+	
+	// find pattern for primagen key splits from VOD - level to level splits
+
 
 /* HUNDO SPLITS
 split on leaving oblivion lairs, each is visited once so use hub split method
