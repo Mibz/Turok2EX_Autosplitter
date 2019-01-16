@@ -20,14 +20,18 @@ init
 	vars.primagenBoss = "ls/Primagen_Boss.map"; // the final boss fight map
 	vars.primagenCinematic = "ls/cinema_primagen.map";
 	
-	// repeat for each lair
-	// vars.oblivionLairNUMBER = "ls/something"; 
 	vars.portOblivion = "ls/Port_Oblivion.map";
+	vars.portOfAdia9 = "ls/Port_Of_Adia_9.map";
 	vars.riverOblivion = "ls/River_Oblivion.map";
+	vars.riverOfSouls4 = "ls/RiverOfSouls_4.map";
 	vars.marshOblivion = "ls/Marsh_Oblivion.map";
+	vars.deathMarsh3 = "ls/Death_Marsh_3.map";
 	vars.blindOblivion = "ls/Blind_Oblivion.map";
+	// TODO get map name 
 	vars.hiveOblivion = "ls/Hive_Oblivion.map";
+	// TODO get map name
 	vars.lightOblivion = "ls/Light_Oblivion.map";
+	// TODO get map name
 	
 	vars.primagenPhase = 0;
 }
@@ -41,15 +45,7 @@ start
 
 split
 {
-	return (current.level == vars.hub && old.level != vars.hub || old.level == vars.portOblivion && current.level != vars.portOblivion || old.level == vars.riverOblivion && current.level != vars.riverOblivion || old.level == vars.marshOblivion && current.level != vars.marshOblivion || old.level == vars.blindOblivion && current.level != vars.blindOblivion || old.level == vars.hiveOblivion && current.level != vars.hiveOblivion || old.level == vars.lightOblivion && current.level != vars.lightOblivion);
-	
-	/* DONE
-	// repeat for each lair, check map names in source 
-	// || old.level == vars.oblivionLairNUMBER && current.level != vars.oblivionLairNUMBER
-	*/
-	
-	// find pattern for primagen key splits from VOD - level to level splits
-
+	return (current.level == vars.hub && old.level != vars.hub || current.level == vars.portOfAdia9 && old.level == vars.portOblivion || current.level == vars.deathMarsh3 && old.level == vars.marshOblivion || current.level == vars.riverOfSouls4 && old.level == vars.riverOblivion);
 
 /* HUNDO SPLITS
 split on leaving oblivion lairs, each is visited once so use hub split method
