@@ -39,23 +39,25 @@ init
 	vars.hive4 = "ls/Hive_4.map";
 
 		// LAIR OF THE BLIND ONES LOCATIONS
+	vars.enterLAIR = "ls/cinema_4_A.map";
 	vars.blindOblivion = "ls/Blind_Oblivion.map";
 	vars.blindLair6 = "ls/Blind_Lair_6.map";
-	vars.enterLAIR = "ls/cinema_4_A.map";
-	
+	vars.blindTotem = "ls/Blind_Totem.map";	
+	vars.blindBoss = "ls/Blind_One_Boss.map";
+
 		// LIGHTSHIP LOCATIONS
+	vars.enterLS = "ls/cinema_6_E.map";
 	vars.lightOblivion = "ls/Light_Oblivion.map";
-	
 	vars.primagenBoss = "ls/Primagen_Boss.map"; 		// the final boss fight map
 	vars.primagenCinematic = "ls/cinema_primagen.map";
 	
-	
-		// TOTEM MAPS
+		// TOTEM MAPS FOR REFERENCE
 	vars.portTotem = "ls/Port_Totem.map"; 			 // split 2
 	vars.marshTotem = "ls/Marsh_Totem.map"; 		 // split 4
 	vars.riverTotem = "ls/River_Totem.map";			 // split 7
 	vars.hiveTotem = "ls/Hive_Totem.map";			 // split 16
-	
+	vars.blindTotem = "ls/Blind_Totem.map";			 // split 12
+
 		// COUNTERS FOR BOSS PHASES
 	vars.primagenPhase = 0;
 }
@@ -111,15 +113,16 @@ split
 		|| current.level == vars.enterDM && old.level != vars.enterDM 					// split 3 Death Marshes portal entered
 		|| current.level == vars.marshTotem && old.level == vars.deathMarsh3 			// split 4 on entering the DM Totem 
 		|| current.level == vars.enterROS && old.level != vars.enterROS					// split 5 River Of Souls portal entered
-		|| current.level == vars.riverOfSouls4 && old.level == vars.riverOblivion 		// split 6 - leaving Oblivion Lair
+		|| current.level == vars.riverOfSouls4 && old.level == vars.riverOblivion 		// split 6 \leaving Oblivion Lair
 		|| current.level == vars.riverTotem && old.level == vars.riverOfSouls8 			// split 7 ROS totem enter
 		|| current.level == vars.enterHIVE && old.level != vars.enterHIVE 				// split 8 on entering HIVE portal
 		|| current.level == vars.hive4 && old.level == vars.hiveOblivion 				// split 9 on leaving Hive Oblivion Room
 		|| current.level == vars.enterLAIR && old.level != vars.enterLAIR				// split 10 on entering blind ones portal
 		|| current.level == vars.blindLair6 && old.level == vars.blindOblivion			// split 11 on leaving Lair Oblivion Room
-		
+		|| current.level == vars.blindTotem && old.level == vars.blindLair6				// split 12 on entering Blind Totem
+		|| current.level == vars.enterLS && old.level != vars.enterLS					// split 13 on entering LS portal -- DELETE WHEN BOSS DEATH SPLIT DONE
+
 		/* TO DO
-12. Enter Lair Totem 				// Blind_Totem.map
 14. Lightship Oblivion Room (Split on leaving)
 16. Enter Hive Totem				// Hive_Totem.map
 18. DM Oblivion Room (Split on leaving)				THIS ONE IS DONE
@@ -137,7 +140,6 @@ split
 		*/
 		
 		|| current.level == vars.deathMarsh3 && old.level == vars.marshOblivion			// split ?? on leaving Oblivion lair of Death Marshes
-
 		);
 
 			// new attempt at working code
