@@ -41,6 +41,7 @@ init
 	vars.hiveOblivion = "ls/Hive_Oblivion.map";
 	vars.hive4 = "ls/Hive_4.map";
 	vars.hiveBreedingGrounds = "ls/Hive_8.map";
+	vars.queen = "ls/Queen_Boss.map";
 
 		// LAIR OF THE BLIND ONES LOCATIONS
 	vars.blindEntrance = "ls/Blind_Lair_1.map";
@@ -123,20 +124,23 @@ split
 		|| current.level == vars.enterLAIR && old.level != vars.enterLAIR				// split on entering blind ones portal
 		|| current.level == vars.blindLair6 && old.level == vars.blindOblivion			// split on leaving Lair Oblivion Room
 		|| current.level == vars.blindTotem && old.level == vars.blindLair6				// split on entering Blind Totem
+//		|| current.level == vars.blindBoss && old.level != blindBoss
+		|| current.level == vars.hub && old.level == vars.blindBoss
 		// 13. Blind One (Split on kill) NOT POSSIBLE YET - FOLLOWING SPLIT IS WHEN GROWTH SPLITS IN VOD https://www.twitch.tv/videos/364886943
 		|| current.level == vars.enterLS && old.level != vars.enterLS					// split on entering LS portal -- DELETE WHEN BOSS DEATH SPLIT DONE
 		|| current.level == vars.light10 && old.level == vars.lightOblivion				// split on leaving lightship oblivion lair
+//		|| current.level == vars.mother && old.level != vars.mother						// splits on start of Mother fight
 		// 15. Mother (Split on kill) NOT POSSIBLE YET
 		|| current.level == vars.hub && old.level == vars.mother						// split on returning to the HUB after mother fight
 		|| current.level == vars.hiveTotem && old.level == vars.hiveBreedingGrounds		// split entering Hive Totem
+//		|| current.level == vars.queen && old.level != vars.queen 						// splits on start of queen fight
+		|| current.level == vars.hub && old.level == vars.queen							// splits on return to hub after queen fight
 		// 17. Queen (Split on kill) NOT POSSIBLE YET
 		|| current.level == vars.deathMarsh3 && old.level == vars.marshOblivion			// split on leaving Oblivion lair of Death Marshes
 		|| current.level == vars.deathMarsh3 && old.level == vars.adonSavePortal		// DM trip 2
 		|| current.level == vars.blindEntrance && old.level == vars.adonSavePortal
 		|| current.level == vars.portVillage && old.level == vars.adonSavePortal		// split on warping from hub to adia village (PoA Trip 2)
 		|| current.level == vars.hiveBreedingGrounds && old.level == vars.adonSavePortal // split on hive trip 2 
-		// delete whichever growth chooses 
-		|| current.level == vars.primagenCinematic && old.level == vars.hub				// splits on the final fight cinematic beginning
 		|| current.level == vars.primagenBoss && old.level == vars.primagenCinematic	// splits on the final fight beginning
 		
 		/*
