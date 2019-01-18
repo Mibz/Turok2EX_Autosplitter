@@ -128,7 +128,7 @@ split
 		|| current.level == vars.blindBoss && old.level == vars.blindTotem				// split on entering boss lair
 		|| current.level == vars.hub && old.level == vars.blindBoss						// splits on returning to hub
 		// 13. Blind One (Split on kill) NOT POSSIBLE YET - FOLLOWING SPLIT IS WHEN GROWTH SPLITS IN VOD https://www.twitch.tv/videos/364886943
-		|| current.level == vars.enterLS && old.level != vars.enterLS					// split on entering LS portal
+// previous split is seconds before -> || current.level == vars.enterLS && old.level != vars.enterLS					// split on entering LS portal
 		|| current.level == vars.light10 && old.level == vars.lightOblivion				// split on leaving lightship oblivion lair
 		|| current.level == vars.mother && old.level == vars.light1						// splits on start of Mother fight
 		// 15. Mother (Split on kill) NOT POSSIBLE YET
