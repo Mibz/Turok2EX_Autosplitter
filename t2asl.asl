@@ -5,11 +5,6 @@ state("horus_x64")
 	// 0x7FE068;
 } 
 
-/*
-The reason for two primagenHP values is that one corresponds to his health in code
- the other the visual of his health bar on screen visible to the player
-*/
-
 init
 {
 		// IMPORTANT LOCATIONS
@@ -75,41 +70,6 @@ start
 	return (current.level == vars.intro);			 // starts timer on intro cinematic after selecting difficulty
 }
 
-/* 
-===================================
-	PROPOSED SPLITS
-===================================
-
-From Turok Speedrunners Discord #General
-GrowthKasei 16/01/2019 at 5:36 PM
-My ideal splits:
-
-1. PoA Oblivion Room (Split on leaving)
-2. Enter PoA Totem
-3. Enter DM
-4. Enter DM Totem 				// Marsh_Totem.map
-5. Enter RoS
-6. RoS Oblivion Room (Split on leaving)
-7. Enter RoS Totem				<--- // DONE UP TO HERE 16/01/2019
-8. Enter Hive
-9. Hive Oblivion Room (Split on leaving)
-10. Enter Lair
-11. Lair Oblivion Room (Split on leaving)
-12. Enter Lair Totem 				// Blind_Totem.map
-13. Blind One (Split on kill)
-14. Lightship Oblivion Room (Split on leaving)
-15. Mother (Split on kill)
-16. Enter Hive Totem				// Hive_Totem.map
-17. Queen (Split on kill)
-18. DM Oblivion Room (Split on leaving)
-19. DM Trip 2 (Split on entering checkpoint)
-20. Lair Trip 2 (Split on entering checkpoint Entrance)
-20. PoA Trip 2 (Split on entering checkpoint Village)
-21. Enter Primagen				// Primagen_Boss.map
-22. End (Split on Primagen kill)
-100% most likely not even 60% of these can be autosplitted
-*/
-
 split
 {
 	return (
@@ -127,16 +87,12 @@ split
 		|| current.level == vars.blindTotem && old.level == vars.blindLair6				// split on entering Blind Totem
 		|| current.level == vars.blindBoss && old.level == vars.blindTotem				// split on entering boss lair
 		|| current.level == vars.hub && old.level == vars.blindBoss						// splits on returning to hub
-		// 13. Blind One (Split on kill) NOT POSSIBLE YET - FOLLOWING SPLIT IS WHEN GROWTH SPLITS IN VOD https://www.twitch.tv/videos/364886943
-// previous split is seconds before -> || current.level == vars.enterLS && old.level != vars.enterLS					// split on entering LS portal
 		|| current.level == vars.light10 && old.level == vars.lightOblivion				// split on leaving lightship oblivion lair
 		|| current.level == vars.mother && old.level == vars.light1						// splits on start of Mother fight
-		// 15. Mother (Split on kill) NOT POSSIBLE YET
 		|| current.level == vars.hub && old.level == vars.mother						// split on returning to the HUB after mother fight
 		|| current.level == vars.hiveTotem && old.level == vars.hiveBreedingGrounds		// split entering Hive Totem
-		|| current.level == vars.queen && old.level == vars.hiveTotem 						// splits on start of queen fight
+		|| current.level == vars.queen && old.level == vars.hiveTotem 					// splits on start of queen fight
 		|| current.level == vars.hub && old.level == vars.queen							// splits on return to hub after queen fight
-		// 17. Queen (Split on kill) NOT POSSIBLE YET
 		|| current.level == vars.deathMarsh3 && old.level == vars.marshOblivion			// split on leaving Oblivion lair of Death Marshes
 		|| current.level == vars.deathMarsh3 && old.level == vars.adonSavePortal		// DM trip 2
 		|| current.level == vars.blindEntrance && old.level == vars.adonSavePortal		// lair trip 2
@@ -144,14 +100,6 @@ split
 		|| current.level == vars.hiveBreedingGrounds && old.level == vars.adonSavePortal // split on hive trip 2 
 		|| current.level == vars.primagenBoss && old.level == vars.primagenCinematic	// splits on the final fight beginning
 		|| current.level == vars.primagenCinematic && old.level == vars.primagenBoss	// splits on death!
-		
-		/*
-	UNABLE TO DO AT THIS TIME
-	
-	13. Blind One (Split on kill)
-	15. Mother (Split on kill)
-	17. Queen (Split on kill)
-		*/
 		);
 }
 
