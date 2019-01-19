@@ -28,6 +28,8 @@ init
 	
 		// DEATH MARSHES LOCATIONS
 	vars.enterDM = "ls/cinema_3_A.map";
+	vars.beforeMarshTotem = "ls/Death_Marsh_8.map";
+	vars.marshTotem = "ls/Marsh_Totem.map"; 		 // split 4
 	vars.marshOblivion = "ls/Marsh_Oblivion.map";
 	vars.deathMarsh3 = "ls/Death_Marsh_3.map";
 	
@@ -76,7 +78,7 @@ split
 		current.level == vars.portOfAdia9 && old.level == vars.portOblivion 			// split on leaving Oblivion lair in Port of Adia
 		|| current.level == vars.portTotem && old.level == vars.portOfAdia9				// split on entering POA Totem
 		|| current.level == vars.enterDM && old.level != vars.enterDM 					// split Death Marshes portal entered
-		|| current.level == vars.marshTotem && old.level == vars.deathMarsh3 			// split on entering the DM Totem 
+		|| current.level == vars.marshTotem && old.level == vars.beforeMarshTotem 			// split on entering the DM Totem 
 		|| current.level == vars.enterROS && old.level != vars.enterROS					// split River Of Souls portal entered
 		|| current.level == vars.riverOfSouls4 && old.level == vars.riverOblivion 		// split leaving Oblivion Lair
 		|| current.level == vars.riverTotem && old.level == vars.riverOfSouls8 			// split ROS totem enter
