@@ -3,7 +3,7 @@ state("horus_x64")
 	string255 level : 0x7FD2C8, 0x4;
 	//	long bossHP : 0x7FE064; // This location used for all bosses health when active  NOT USED
 	// 0x7FE068;
-} 
+}
 
 init
 {
@@ -74,35 +74,51 @@ start
 
 split
 {
-	return (
-		current.level == vars.portOfAdia9 && old.level == vars.portOblivion 			// split on leaving Oblivion lair in Port of Adia
-		|| current.level == vars.portTotem && old.level == vars.portOfAdia9				// split on entering POA Totem
-		|| current.level == vars.enterDM && old.level != vars.enterDM 					// split Death Marshes portal entered
-		|| current.level == vars.marshTotem && old.level == vars.beforeMarshTotem 			// split on entering the DM Totem 
-		|| current.level == vars.enterROS && old.level != vars.enterROS					// split River Of Souls portal entered
-		|| current.level == vars.riverOfSouls4 && old.level == vars.riverOblivion 		// split leaving Oblivion Lair
-		|| current.level == vars.riverTotem && old.level == vars.riverOfSouls8 			// split ROS totem enter
-		|| current.level == vars.enterHIVE && old.level != vars.enterHIVE 				// split on entering HIVE portal
-		|| current.level == vars.hive4 && old.level == vars.hiveOblivion 				// split on leaving Hive Oblivion Room
-		|| current.level == vars.enterLAIR && old.level != vars.enterLAIR				// split on entering blind ones portal
-		|| current.level == vars.blindLair6 && old.level == vars.blindOblivion			// split on leaving Lair Oblivion Room
-		|| current.level == vars.blindTotem && old.level == vars.blindLair6				// split on entering Blind Totem
-		|| current.level == vars.blindBoss && old.level == vars.blindTotem				// split on entering boss lair
-		|| current.level == vars.hub && old.level == vars.blindBoss						// splits on returning to hub
-		|| current.level == vars.light10 && old.level == vars.lightOblivion				// split on leaving lightship oblivion lair
-		|| current.level == vars.mother && old.level == vars.light1						// splits on start of Mother fight
-		|| current.level == vars.hub && old.level == vars.mother						// split on returning to the HUB after mother fight
-		|| current.level == vars.hiveTotem && old.level == vars.hiveBreedingGrounds		// split entering Hive Totem
-		|| current.level == vars.queen && old.level == vars.hiveTotem 					// splits on start of queen fight
-		|| current.level == vars.hub && old.level == vars.queen							// splits on return to hub after queen fight
-		|| current.level == vars.deathMarsh3 && old.level == vars.marshOblivion			// split on leaving Oblivion lair of Death Marshes
-		|| current.level == vars.deathMarsh3 && old.level == vars.adonSavePortal		// DM trip 2
-		|| current.level == vars.blindEntrance && old.level == vars.adonSavePortal		// lair trip 2
-		|| current.level == vars.portVillage && old.level == vars.adonSavePortal		// split on warping from hub to adia village (PoA Trip 2)
-		|| current.level == vars.hiveBreedingGrounds && old.level == vars.adonSavePortal // split on hive trip 2 
-		|| current.level == vars.primagenBoss && old.level == vars.primagenCinematic	// splits on the final fight beginning
-		|| current.level == vars.primagenCinematic && old.level == vars.primagenBoss	// splits on death!
+
+	if(timer.Run.CategoryName == "100%")
+	{
+		return
+		(
+			current.level == vars.portOfAdia9 && old.level == vars.portOblivion 			// split on leaving Oblivion lair in Port of Adia
+			|| current.level == vars.portTotem && old.level == vars.portOfAdia9				// split on entering POA Totem
+			|| current.level == vars.enterDM && old.level != vars.enterDM 					// split Death Marshes portal entered
+			|| current.level == vars.marshTotem && old.level == vars.beforeMarshTotem 		// split on entering the DM Totem 
+			|| current.level == vars.enterROS && old.level != vars.enterROS					// split River Of Souls portal entered
+			|| current.level == vars.riverOfSouls4 && old.level == vars.riverOblivion 		// split leaving Oblivion Lair
+			|| current.level == vars.riverTotem && old.level == vars.riverOfSouls8 			// split ROS totem enter
+			|| current.level == vars.enterHIVE && old.level != vars.enterHIVE 				// split on entering HIVE portal
+			|| current.level == vars.hive4 && old.level == vars.hiveOblivion 				// split on leaving Hive Oblivion Room
+			|| current.level == vars.enterLAIR && old.level != vars.enterLAIR				// split on entering blind ones portal
+			|| current.level == vars.blindLair6 && old.level == vars.blindOblivion			// split on leaving Lair Oblivion Room
+			|| current.level == vars.blindTotem && old.level == vars.blindLair6				// split on entering Blind Totem
+			|| current.level == vars.blindBoss && old.level == vars.blindTotem				// split on entering boss lair
+			|| current.level == vars.hub && old.level == vars.blindBoss						// splits on returning to hub
+			|| current.level == vars.light10 && old.level == vars.lightOblivion				// split on leaving lightship oblivion lair
+			|| current.level == vars.mother && old.level == vars.light1						// splits on start of Mother fight
+			|| current.level == vars.hub && old.level == vars.mother						// split on returning to the HUB after mother fight
+			|| current.level == vars.hiveTotem && old.level == vars.hiveBreedingGrounds		// split entering Hive Totem
+			|| current.level == vars.queen && old.level == vars.hiveTotem 					// splits on start of queen fight
+			|| current.level == vars.hub && old.level == vars.queen							// splits on return to hub after queen fight
+			|| current.level == vars.deathMarsh3 && old.level == vars.marshOblivion			// split on leaving Oblivion lair of Death Marshes
+			|| current.level == vars.deathMarsh3 && old.level == vars.adonSavePortal		// DM trip 2
+			|| current.level == vars.blindEntrance && old.level == vars.adonSavePortal		// lair trip 2
+			|| current.level == vars.portVillage && old.level == vars.adonSavePortal		// split on warping from hub to adia village (PoA Trip 2)
+			|| current.level == vars.hiveBreedingGrounds && old.level == vars.adonSavePortal // split on hive trip 2 
+			|| current.level == vars.primagenBoss && old.level == vars.primagenCinematic	// splits on the final fight beginning
+			|| current.level == vars.primagenCinematic && old.level == vars.primagenBoss	// splits on death!
 		);
+	}
+	
+	if(timer.Run.CategoryName == "Any%")
+	{
+		return
+		(
+			current.level == vars.enterDM && old.level != vars.enterDM 						// split Death Marshes portal entered
+			|| current.level == vars.hub && old.level == vars.adonSavePortal				// split on warp to hub to prevent accidental splits if entering warp portals
+			|| current.level == vars.primagenCinematic && old.level == vars.primagenBoss	// splits on death!
+		);
+	}
+	
 }
 
 reset
