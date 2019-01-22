@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Run version="1.7.0">
+  <GameIcon />
+  <GameName>Turok 2: Seeds of Evil Remaster</GameName>
+  <CategoryName>Any%</CategoryName>
+  <Metadata>
+    <Run id="" />
+    <Platform usesEmulator="False">
+    </Platform>
+    <Region>
+    </Region>
+    <Variables />
+  </Metadata>
+  <Offset>00:00:00</Offset>
+  <AttemptCount>23</AttemptCount>
+  <AttemptHistory>
+    <Attempt id="1" started="12/24/2018 08:49:32" isStartedSynced="True" ended="12/24/2018 08:53:23" isEndedSynced="True" />
+    <Attempt id="2" started="12/24/2018 08:54:25" isStartedSynced="True" ended="12/24/2018 09:00:19" isEndedSynced="True" />
+    <Attempt id="3" started="12/24/2018 09:01:15" isStartedSynced="True" ended="12/24/2018 09:06:47" isEndedSynced="True" />
+    <Attempt id="4" started="12/24/2018 09:07:16" isStartedSynced="True" ended="12/24/2018 09:13:20" isEndedSynced="True" />
+    <Attempt id="5" started="12/24/2018 09:16:55" isStartedSynced="True" ended="12/24/2018 09:21:43" isEndedSynced="True" />
+    <Attempt id="6" started="12/24/2018 09:21:50" isStartedSynced="True" ended="12/24/2018 09:22:48" isEndedSynced="True" />
+    <Attempt id="7" started="12/24/2018 09:22:50" isStartedSynced="True" ended="12/24/2018 09:31:53" isEndedSynced="True" />
+    <Attempt id="8" started="12/24/2018 10:03:02" isStartedSynced="True" ended="12/24/2018 10:31:13" isEndedSynced="True" />
+    <Attempt id="9" started="12/24/2018 10:31:55" isStartedSynced="True" ended="12/24/2018 10:48:50" isEndedSynced="True" />
+    <Attempt id="10" started="12/24/2018 10:49:19" isStartedSynced="True" ended="12/24/2018 10:49:22" isEndedSynced="True" />
+    <Attempt id="11" started="12/24/2018 10:49:24" isStartedSynced="True" ended="12/24/2018 10:49:29" isEndedSynced="True" />
+    <Attempt id="12" started="12/24/2018 11:34:19" isStartedSynced="True" ended="12/24/2018 11:44:38" isEndedSynced="True" />
+    <Attempt id="13" started="01/21/2019 12:49:34" isStartedSynced="True" ended="01/21/2019 13:10:45" isEndedSynced="True" />
+    <Attempt id="14" started="01/21/2019 13:25:14" isStartedSynced="True" ended="01/21/2019 15:16:24" isEndedSynced="True">
+      <PauseTime>00:39:30.8740000</PauseTime>
+    </Attempt>
+  </AttemptHistory>
+  <Segments>
+    <Segment>
+      <Name>Port of Adia</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:10:17.1150000</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="13">
+          <RealTime>00:13:12.3300000</RealTime>
+        </Time>
+        <Time id="14">
+          <RealTime>00:10:17.1150000</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Death Marshes</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:06:48.5080000</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="13">
+          <RealTime>00:07:31.7660000</RealTime>
+        </Time>
+        <Time id="14">
+          <RealTime>00:06:48.5080000</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>River Of Souls</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:14:37.7580000</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="14">
+          <RealTime>00:14:37.7580000</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Hive of The Mantids</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:25:16.9150000</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="14">
+          <RealTime>00:25:16.9150000</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Lair of the Blind Ones</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:13:12.5280000</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="14">
+          <RealTime>00:13:12.5280000</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Primagen's Lightship</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+      <BestSegmentTime />
+      <SegmentHistory />
+    </Segment>
+    <Segment>
+      <Name>The Primagen</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best" />
+      </SplitTimes>
+      <BestSegmentTime />
+      <SegmentHistory />
+    </Segment>
+  </Segments>
+  <AutoSplitterSettings />
+</Run>
