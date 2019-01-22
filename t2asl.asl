@@ -66,9 +66,7 @@ init
 }
 
 start
-{
-	vars.primagenPhase = 0;
-	
+{	
 	return (current.level == vars.intro);			 // starts timer on intro cinematic after selecting difficulty
 }
 
