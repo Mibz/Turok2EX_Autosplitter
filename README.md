@@ -23,3 +23,6 @@ https://raw.githubusercontent.com/QuarkEra/Turok2EX_Autosplitter/master/Turok%20
 
 # 100% splits
 https://raw.githubusercontent.com/QuarkEra/Turok2EX_Autosplitter/master/T2_100%25.lss
+
+# FAQ
+Use the following link to join the Turok Speedrunning Discord https://discord.gg/WtrQuhs and @MathyWathy with any questions about this autosplitter, or because it is a great little community of runners.
