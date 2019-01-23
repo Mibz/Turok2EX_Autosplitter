@@ -14,5 +14,4 @@ Timer ends on the Primagen's death.
 # Splits
 		
 Splits are made as per the discussion in the Turok Speedrunning Discord #General chat for more info: https://www.speedrun.com/t2r/thread/8uit9
-
-Sample splits files are available from this repo for both Any% and 100% categories, the latter of which has 27 splits and rather messy names.
+Any% splits = https://raw.githubusercontent.com/QuarkEra/Turok2EX_Autosplitter/master/Turok%202%20Seeds%20of%20Evil%20Remaster%20-%20Any%25.lss
