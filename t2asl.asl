@@ -113,7 +113,8 @@ split
 		(
 			current.level == vars.enterDM && old.level != vars.enterDM 						// split Death Marshes portal entered
 			|| current.level == vars.hub && old.level == vars.adonSavePortal				// split on warp to hub to prevent accidental splits if entering warp portals
-			|| current.level == vars.portVillage && old.level == vars.adonSavePortal 	// backtracking starts
+			// GROWTH REQUEST BACKTRACKING SPLITS AT START OF PRIMAGEN FIGHT || current.level == vars.portVillage && old.level == vars.adonSavePortal 	// backtracking starts
+			|| current.level == vars.primagenBoss && old.level == vars.primagenCinematic	// splits on the final fight beginning
 			|| current.level == vars.primagenCinematic && old.level == vars.primagenBoss	// splits on death!
 		);
 	}
