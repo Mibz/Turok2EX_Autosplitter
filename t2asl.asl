@@ -51,7 +51,8 @@ init
 		// LIGHTSHIP LOCATIONS
 	vars.enterLS = "ls/cinema_6_E.map";
 	vars.lightOblivion = "ls/Light_Oblivion.map";
-	vars.light10 = "ls/Lightship_10.map";
+	vars.light2 = "ls/Lightship_2.map";					// where the adon save portal / checkpoint is located
+	vars.light10 = "ls/Lightship_10.map";				// where the oblivion portal is located
 	vars.primagenBoss = "ls/Primagen_Boss.map"; 		// the final boss fight map
 	vars.primagenCinematic = "ls/cinema_primagen.map";	// plays before and after the fight 
 	vars.light1 = "ls/Lightship_1.map";
@@ -111,11 +112,15 @@ split
 	{
 		return
 		(
-			current.level == vars.enterDM && old.level != vars.enterDM 						// split Death Marshes portal entered
-			|| current.level == vars.hub && old.level == vars.adonSavePortal				// split on warp to hub to prevent accidental splits if entering warp portals
-			// GROWTH REQUEST BACKTRACKING SPLITS AT START OF PRIMAGEN FIGHT || current.level == vars.portVillage && old.level == vars.adonSavePortal 	// backtracking starts
-			|| current.level == vars.primagenBoss && old.level == vars.primagenCinematic	// splits on the final fight beginning
-			|| current.level == vars.primagenCinematic && old.level == vars.primagenBoss	// splits on death!
+			current.level == vars.portTotem && old.level != vars.portTotem 					// splits entering PoA Totem
+			|| current.level == vars.enterDM && old.level != vars.enterDM 					// splits on entering Death Marshes portal
+			|| current.level == vars.enterROS && old.level != vars.enterROS					// splits on entering RoS portal
+			|| current.level == vars.enterHIVE && old.level != vars.enterHIVE				// splits on entering Hive portal
+			|| current.level == vars.blindEntrance && old.level != vars.blindEntrance		// splits on entering Lair portal
+			|| current.level == vars.enterLS && old.level != vars.enterLS					// splits on entering Lightship portal
+			|| current.level == vars.adonSavePortal && old.level == vars.light2				// splits on entering checkpoint from Lightship, backtracking starts at either Village, 3 or breeding
+			|| current.level == vars.primagenBoss && old.level == vars.primagenCinematic	// splits on the final fight beginning #8
+			|| current.level == vars.primagenCinematic && old.level == vars.primagenBoss	// splits on death! #9
 		);
 	}
 	
