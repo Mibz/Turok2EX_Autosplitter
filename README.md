@@ -41,7 +41,7 @@ Splits were made as per the discussion in the Turok Speedrunning Discord #Genera
 Right click your LiveSplit, choose "Open Splits" and select "From URL..." paste the following URLs into the box to use the splits, remember to save them somewhere you can find them. 
 
 # Any% splits
-Update incoming...
+https://raw.githubusercontent.com/QuarkEra/Turok2EX_Autosplitter/master/Turok%202%20Seeds%20of%20Evil%20Remaster%20-%20Any%25.lss
 
 # 100% splits
 https://raw.githubusercontent.com/QuarkEra/Turok2EX_Autosplitter/master/T2_100%25.lss
