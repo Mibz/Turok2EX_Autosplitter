@@ -41,8 +41,8 @@ init
 	vars.queen = "ls/Queen_Boss.map";
 
 		// LAIR OF THE BLIND ONES LOCATIONS
-	vars.blindEntrance = "ls/Blind_Lair_1.map";
 	vars.enterLAIR = "ls/cinema_4_A.map";
+	vars.blindEntrance = "ls/Blind_Lair_1.map";
 	vars.blindOblivion = "ls/Blind_Oblivion.map";
 	vars.blindLair6 = "ls/Blind_Lair_6.map";
 	vars.blindTotem = "ls/Blind_Totem.map";	
@@ -116,7 +116,7 @@ split
 			|| current.level == vars.enterDM && old.level != vars.enterDM 					// splits on entering Death Marshes portal
 			|| current.level == vars.enterROS && old.level != vars.enterROS					// splits on entering RoS portal
 			|| current.level == vars.enterHIVE && old.level != vars.enterHIVE				// splits on entering Hive portal
-			|| current.level == vars.blindEntrance && old.level != vars.blindEntrance		// splits on entering Lair portal
+			|| current.level == vars.enterLAIR && old.level != vars.enterLAIR		// splits on entering Lair portal
 			|| current.level == vars.enterLS && old.level != vars.enterLS					// splits on entering Lightship portal
 			|| current.level == vars.adonSavePortal && old.level == vars.light2				// splits on entering checkpoint from Lightship, backtracking starts at either Village, 3 or breeding
 			|| current.level == vars.primagenBoss && old.level == vars.primagenCinematic	// splits on the final fight beginning #8
