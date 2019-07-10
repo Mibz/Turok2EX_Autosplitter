@@ -1,5 +1,14 @@
-// For use only when loading a save at the start of a level, will end when reaching the HUB
-// Intended for single split layouts
+/*
+Individual level autosplitter, starts on player 
+taking control at the start of each level - splits 
+when entering the hub. Intended for single split layouts.
+
+One thing - if you are in the starting location of a 
+level and reload a save from that area it wont start 
+the timer due to the timer starting only when  
+starting in that location which it did you never left 
+it you are still there.
+*/
 
 state("horus_x64")
 {
@@ -60,7 +69,11 @@ start
 
 split
 {
-	return (current.level == vars.hub && old.level != vars.hub);
+	return
+  (
+    current.level == vars.hub && old.level != vars.hub
+    || current.level == vars.hubLowerCase && old.level != vars.hubLowerCase
+  );
 }
 
 reset
