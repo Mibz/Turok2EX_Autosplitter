@@ -1,12 +1,44 @@
-state("horus_x64")
+state("horus_x64", "1.5.9")
 {
-	string255 level : 0x7FD2C8, 0x4;
+  // memSize 0x8DD000
+  string40 level : 0x7F2CD0, 0x0, 0x4;
+
+	// string255 level : 0x7FD2C8, 0x4; // Why does this make 'of' lowercase?
 	//	long bossHP : 0x7FE064; // This location used for all bosses health when active  NOT USED
 	// 0x7FE068;
 }
 
+state("horus_x64", "debug_inventory") 
+{
+  // memSize 0x8BB1000
+  // fileSize 10,682,880
+  string40 level : 0x8AE4670, 0x0, 0x4;
+}
+
+// state("horus_x64", "playfab")
+// {
+//   // memSize 0x8BB1000
+//   // fileSize 10,681,344
+//   string40 level : 0x8AE4650, 0x0, 0x4;
+// }
+
 init
 {
+    // Call this action to print debug messages, e.g. vars.debug("Split on map: " + current.level)
+    vars.debug = (Action<string>)((msg) => print("[Turok 2 ASL] " + msg));
+
+    // The version is found by checking how much memory the process reserves against known values
+    int memSize = modules.First().ModuleMemorySize;
+    vars.debug("memSize: " + memSize);
+    if (memSize == 0x8DD000) version = "1.5.9";
+    else if (memSize == 0x8BB1000) version = "debug_inventory";
+    // else if (memSize == 0x8BB1000) version = "playfab";
+    else 
+    {
+        version = "1.5.9";
+        vars.debug("Couldn't detect version, defaulting to 1.5.9");
+    }
+
 		// IMPORTANT LOCATIONS
 	vars.intro = "ls/(6)_cin_adon.map";					 // intro cinematic for timer start and the auto reset
 	vars.hub = "ls/HUB.map";							 // the hub map
