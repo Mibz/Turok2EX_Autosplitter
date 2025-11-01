@@ -8,7 +8,7 @@ state("horus_x64", "1.5.9")
     string255 level : 0x00883F68, 0x0;
 }
 
-state("horus_x64", "3.0.1220") 
+state("horus_Shipping_Playfab_Steam_x64", "3.0.1220") 
 {
     // 3.0.1220 (2025-10-31) Current release
     // Game: 8045293065327702475
