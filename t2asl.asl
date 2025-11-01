@@ -16,7 +16,7 @@ state("horus_x64", "3.0.1220")
 	// memSize: 19140608
     // fileSize: 17,326,592
 
-    string255 level : 0x1079460, 0x0;
+    string255 level : 0x109A068, 0x0;
 }
 
 init
