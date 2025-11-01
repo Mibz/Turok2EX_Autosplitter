@@ -1,69 +1,97 @@
-state("horus_x64")
+state("horus_x64", "1.5.9")
 {
-	string255 level : 0x7FD2C8, 0x4;
-	//	long bossHP : 0x7FE064; // This location used for all bosses health when active  NOT USED
-	// 0x7FE068;
+    // 1.5.9 (Intel Patch) (2023-05-09)
+    // Game: 7544447072252135916
+    // Windows: 7603634718733648236
+	// memSize: 9646080
+
+    string255 level : 0x00883F68, 0x0;
+}
+
+state("horus_x64", "3.0.1220") 
+{
+    // 3.0.1220 (2025-10-31) Current release
+    // Game: 8045293065327702475
+    // Windows: 9199892537689109350
+	// memSize: 19140608
+    // fileSize: 17,326,592
+
+    string255 level : 0x1079460, 0x0;
 }
 
 init
 {
+    // Call this action to print debug messages, e.g. vars.debug("Split on map: " + current.level)
+    vars.debug = (Action<string>)((msg) => print("[Turok 2 ASL] " + msg));
+
+    // The version is found by checking how much memory the process reserves against known values
+    int memSize = modules.First().ModuleMemorySize;
+    vars.debug("memSize: " + memSize);
+    if (memSize == 9646080) version = "1.5.9";
+    else if (memSize == 19140608) version = "3.0.1220";
+    else 
+    {
+        version = "3.0.1220";
+        vars.debug("Couldn't detect version, defaulting to 3.0.1220");
+    }
+
 		// IMPORTANT LOCATIONS
-	vars.intro = "ls/(6)_cin_adon.map";					 // intro cinematic for timer start and the auto reset
-	vars.hub = "ls/HUB.map";							 // the hub map
-	vars.adonSavePortal = "ls/Adon_SavePortal.map";
-	vars.finalKeyPlaced = "ls/cinema_hubportal.map";
+	vars.intro = "levels/(6)_cin_adon.map";					 // intro cinematic for timer start and the auto reset
+	vars.hub = "levels/HUB.map";							 // the hub map
+	vars.adonSavePortal = "levels/Adon_SavePortal.map";
+	vars.finalKeyPlaced = "levels/cinema_hubportal.map";
 	
 		// PORT OF ADIA LOCATIONS
-	vars.portOfAdia9 = "ls/Port_Of_Adia_9.map";
-	vars.portOblivion = "ls/Port_Oblivion.map"; 	 // split 1
-	vars.portTotem = "ls/Port_Totem.map"; 			 // split 2
-	vars.portVillage = "ls/Port_Of_Adia_5.map";		 // split for return to POA for Primagen Key
+	vars.portOfAdia9 = "levels/Port_Of_Adia_9.map";
+	vars.portOblivion = "levels/Port_Oblivion.map"; 	 // split 1
+	vars.portTotem = "levels/Port_Totem.map"; 			 // split 2
+	vars.portVillage = "levels/Port_Of_Adia_5.map";		 // split for return to POA for Primagen Key
 	
 		// RIVER OF SOULS LOCATIONS
-	vars.enterROS = "ls/cinema_2_dinosoid.map";
-	vars.riverOblivion = "ls/River_Oblivion.map";
-	vars.riverOfSouls4 = "ls/RiverOfSouls_4.map";
-	vars.riverOfSouls8 = "ls/RiverOfSouls_8.map"; 	// location of the totem
-	vars.riverTotem = "ls/River_Totem.map";			// split 7
+	vars.enterROS = "levels/cinema_2_dinosoid.map";
+	vars.riverOblivion = "levels/River_Oblivion.map";
+	vars.riverOfSouls4 = "levels/RiverOfSouls_4.map";
+	vars.riverOfSouls8 = "levels/RiverOfSouls_8.map"; 	// location of the totem
+	vars.riverTotem = "levels/River_Totem.map";			// split 7
 	
 		// DEATH MARSHES LOCATIONS
-	vars.enterDM = "ls/cinema_3_A.map";
-	vars.beforeMarshTotem = "ls/Death_Marsh_8.map";
-	vars.marshTotem = "ls/Marsh_Totem.map"; 		 // split 4
-	vars.marshOblivion = "ls/Marsh_Oblivion.map";
-	vars.deathMarsh3 = "ls/Death_Marsh_3.map";
+	vars.enterDM = "levels/cinema_3_A.map";
+	vars.beforeMarshTotem = "levels/Death_Marsh_8.map";
+	vars.marshTotem = "levels/Marsh_Totem.map"; 		 // split 4
+	vars.marshOblivion = "levels/Marsh_Oblivion.map";
+	vars.deathMarsh3 = "levels/Death_Marsh_3.map";
 	
 		// HIVE OF THE MANTIDS LOCATIONS
-	vars.enterHIVE = "ls/cinema_5_top.map";
-	vars.hiveOblivion = "ls/Hive_Oblivion.map";
-	vars.hive4 = "ls/Hive_4.map";
-	vars.hiveBreedingGrounds = "ls/Hive_8.map";
-	vars.queen = "ls/Queen_Boss.map";
+	vars.enterHIVE = "levels/cinema_5_top.map";
+	vars.hiveOblivion = "levels/Hive_Oblivion.map";
+	vars.hive4 = "levels/Hive_4.map";
+	vars.hiveBreedingGrounds = "levels/Hive_8.map";
+	vars.queen = "levels/Queen_Boss.map";
 
 		// LAIR OF THE BLIND ONES LOCATIONS
-	vars.enterLAIR = "ls/cinema_4_A.map";
-	vars.blindEntrance = "ls/Blind_Lair_1.map";
-	vars.blindOblivion = "ls/Blind_Oblivion.map";
-	vars.blindLair6 = "ls/Blind_Lair_6.map";
-	vars.blindTotem = "ls/Blind_Totem.map";	
-	vars.blindBoss = "ls/Blind_One_Boss.map";
+	vars.enterLAIR = "levels/cinema_4_A.map";
+	vars.blindEntrance = "levels/Blind_Lair_1.map";
+	vars.blindOblivion = "levels/Blind_Oblivion.map";
+	vars.blindLair6 = "levels/Blind_Lair_6.map";
+	vars.blindTotem = "levels/Blind_Totem.map";	
+	vars.blindBoss = "levels/Blind_One_Boss.map";
 
 		// LIGHTSHIP LOCATIONS
-	vars.enterLS = "ls/cinema_6_E.map";
-	vars.lightOblivion = "ls/Light_Oblivion.map";
-	vars.light2 = "ls/Lightship_2.map";					// where the adon save portal / checkpoint is located
-	vars.light10 = "ls/Lightship_10.map";				// where the oblivion portal is located
-	vars.primagenBoss = "ls/Primagen_Boss.map"; 		// the final boss fight map
-	vars.primagenCinematic = "ls/cinema_primagen.map";	// plays before and after the fight 
-	vars.light1 = "ls/Lightship_1.map";
-	vars.mother = "ls/Mother_Boss.map";
+	vars.enterLS = "levels/cinema_6_E.map";
+	vars.lightOblivion = "levels/Light_Oblivion.map";
+	vars.light2 = "levels/Lightship_2.map";					// where the adon save portal / checkpoint is located
+	vars.light10 = "levels/Lightship_10.map";				// where the oblivion portal is located
+	vars.primagenBoss = "levels/Primagen_Boss.map"; 		// the final boss fight map
+	vars.primagenCinematic = "levels/cinema_primagen.map";	// plays before and after the fight 
+	vars.light1 = "levels/Lightship_1.map";
+	vars.mother = "levels/Mother_Boss.map";
 	
 		// TOTEM MAPS FOR REFERENCE
-	vars.portTotem = "ls/Port_Totem.map"; 			 // split 2
-	vars.marshTotem = "ls/Marsh_Totem.map"; 		 // split 4
-	vars.riverTotem = "ls/River_Totem.map";			 // split 7
-	vars.hiveTotem = "ls/Hive_Totem.map";			 // split 16
-	vars.blindTotem = "ls/Blind_Totem.map";			 // split 12
+	vars.portTotem = "levels/Port_Totem.map"; 			 // split 2
+	vars.marshTotem = "levels/Marsh_Totem.map"; 		 // split 4
+	vars.riverTotem = "levels/River_Totem.map";			 // split 7
+	vars.hiveTotem = "levels/Hive_Totem.map";			 // split 16
+	vars.blindTotem = "levels/Blind_Totem.map";			 // split 12
 }
 
 start
