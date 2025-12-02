@@ -8,15 +8,12 @@ state("horus_x64", "1.5.9")
     string255 level : 0x00883F68, 0x0;
 }
 
-state("horus_Shipping_Playfab_Steam_x64", "3.0.1220") 
+state("horus_Shipping_Playfab_Steam_x64", "3.0.1279") 
 {
-    // 3.0.1220 (2025-10-31) Current release
-    // Game: 8045293065327702475
-    // Windows: 9199892537689109350
-	// memSize: 19140608
-    // fileSize: 17,326,592
+    // 3.0.1279 (2025-12-01)
+	// memSize: 19152896
 
-    string255 level : 0x109A068, 0x0;
+    string255 level : 0x109D2F8, 0x0;
 }
 
 init
@@ -28,11 +25,11 @@ init
     int memSize = modules.First().ModuleMemorySize;
     vars.debug("memSize: " + memSize);
     if (memSize == 9646080) version = "1.5.9";
-    else if (memSize == 19140608) version = "3.0.1220";
+    else if (memSize == 19152896) version = "3.0.1279";
     else 
     {
-        version = "3.0.1220";
-        vars.debug("Couldn't detect version, defaulting to 3.0.1220");
+        version = "3.0.1279";
+        vars.debug("Couldn't detect version, defaulting to 3.0.1279");
     }
 
 		// IMPORTANT LOCATIONS
