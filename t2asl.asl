@@ -8,12 +8,12 @@ state("horus_x64", "1.5.9")
     string255 level : 0x00883F68, 0x0;
 }
 
-state("horus_Shipping_Playfab_Steam_x64", "3.0.1279") 
+state("horus_Shipping_Playfab_Steam_x64", "3.0.1330") 
 {
-    // 3.0.1279 (2025-12-01)
-	// memSize: 19152896
+    // 3.0.1330 (2026-01-6)
+	// memSize: 14299136
 
-    string255 level : 0x109D2F8, 0x0;
+    string255 level : 0xBC2928, 0x0;
 }
 
 init
@@ -25,11 +25,11 @@ init
     int memSize = modules.First().ModuleMemorySize;
     vars.debug("memSize: " + memSize);
     if (memSize == 9646080) version = "1.5.9";
-    else if (memSize == 19152896) version = "3.0.1279";
+    else if (memSize == 14299136) version = "3.0.1330";
     else 
     {
-        version = "3.0.1279";
-        vars.debug("Couldn't detect version, defaulting to 3.0.1279");
+        version = "3.0.1330";
+        vars.debug("Couldn't detect version, defaulting to latest");
     }
 
 		// IMPORTANT LOCATIONS
