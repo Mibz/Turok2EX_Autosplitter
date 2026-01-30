@@ -1,0 +1,11 @@
+map levels/Port_Totem.map
+map levels/cinema_3_A.map
+map levels/cinema_2_dinosoid.map
+map levels/cinema_5_top.map
+map levels/cinema_4_A.map
+map levels/cinema_6_E.map
+map levels/Lightship_2.map
+map levels/Adon_SavePortal.map
+map levels/cinema_primagen.map
+map levels/Primagen_Boss.map
+map levels/cinema_primagen.map
