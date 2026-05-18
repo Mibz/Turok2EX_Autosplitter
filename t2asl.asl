@@ -12,6 +12,12 @@ state("horus_Shipping_Playfab_Steam_x64", "3.0.1334")
     string255 level : 0xBC3930, 0x0;
 }
 
+state("Turok2", "3.0.1336") 
+{
+    // 3.0.1336 (2026-03-18)
+    string255 level : 0xBC3910, 0x0;
+}
+
 init
 {
     // Call this action to print debug messages, e.g. vars.debug("Split on map: " + current.level)
