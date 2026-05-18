@@ -3,16 +3,12 @@ state("horus_x64", "1.5.9")
     // 1.5.9 (Intel Patch) (2023-05-09)
     // Game: 7544447072252135916
     // Windows: 7603634718733648236
-	// memSize: 9646080
-
     string255 level : 0x00883F68, 0x0;
 }
 
 state("horus_Shipping_Playfab_Steam_x64", "3.0.1334") 
 {
     // 3.0.1334 (2026-01-30)
-	// memSize: 14307328
-
     string255 level : 0xBC3930, 0x0;
 }
 
@@ -21,7 +17,12 @@ init
     // Call this action to print debug messages, e.g. vars.debug("Split on map: " + current.level)
     vars.debug = (Action<string>)((msg) => print("[Turok 2 ASL] " + msg));
 
-    // The version is found by checking how much memory the process reserves against known values
+  	/* DEPRECATED
+	Because 3.0.1334 and 3.0.1336 have the same memory size we can't use it to distinguish versions anymore
+	but the change in executable name means we can simplify by just looking at that. 
+	I'm leaving the old code in for now just in case things change again.
+  
+	// The version is found by checking how much memory the process reserves against known values
     int memSize = modules.First().ModuleMemorySize;
     vars.debug("memSize: " + memSize);
     if (memSize == 9646080) version = "1.5.9";
@@ -31,6 +32,7 @@ init
         version = "3.0.1334";
         vars.debug("Couldn't detect version, defaulting to latest");
     }
+	*/
 
 		// IMPORTANT LOCATIONS
 	vars.intro = "levels/(6)_cin_adon.map";					 // intro cinematic for timer start and the auto reset
