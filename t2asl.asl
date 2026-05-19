@@ -3,17 +3,19 @@ state("horus_x64", "1.5.9")
     // 1.5.9 (Intel Patch) (2023-05-09)
     // Game: 7544447072252135916
     // Windows: 7603634718733648236
-	// memSize: 9646080
-
     string255 level : 0x00883F68, 0x0;
 }
 
 state("horus_Shipping_Playfab_Steam_x64", "3.0.1334") 
 {
     // 3.0.1334 (2026-01-30)
-	// memSize: 14307328
-
     string255 level : 0xBC3930, 0x0;
+}
+
+state("Turok2", "3.0.1336") 
+{
+    // 3.0.1336 (2026-03-18)
+    string255 level : 0xBC3910, 0x0;
 }
 
 init
@@ -21,7 +23,12 @@ init
     // Call this action to print debug messages, e.g. vars.debug("Split on map: " + current.level)
     vars.debug = (Action<string>)((msg) => print("[Turok 2 ASL] " + msg));
 
-    // The version is found by checking how much memory the process reserves against known values
+  	/* DEPRECATED
+	Because 3.0.1334 and 3.0.1336 have the same memory size we can't use it to distinguish versions anymore
+	but the change in executable name means we can simplify by just looking at that. 
+	I'm leaving the old code in for now just in case things change again.
+  
+	// The version is found by checking how much memory the process reserves against known values
     int memSize = modules.First().ModuleMemorySize;
     vars.debug("memSize: " + memSize);
     if (memSize == 9646080) version = "1.5.9";
@@ -31,41 +38,43 @@ init
         version = "3.0.1334";
         vars.debug("Couldn't detect version, defaulting to latest");
     }
+	*/
 
-		// IMPORTANT LOCATIONS
+	// IMPORTANT LOCATIONS
 	vars.intro = "levels/(6)_cin_adon.map";					 // intro cinematic for timer start and the auto reset
 	vars.hub = "levels/HUB.map";							 // the hub map
 	vars.adonSavePortal = "levels/Adon_SavePortal.map";
 	vars.finalKeyPlaced = "levels/cinema_hubportal.map";
 	
-		// PORT OF ADIA LOCATIONS
+	// PORT OF ADIA
 	vars.portOfAdia9 = "levels/Port_Of_Adia_9.map";
 	vars.portOblivion = "levels/Port_Oblivion.map"; 	 // split 1
 	vars.portTotem = "levels/Port_Totem.map"; 			 // split 2
 	vars.portVillage = "levels/Port_Of_Adia_5.map";		 // split for return to POA for Primagen Key
 	
-		// RIVER OF SOULS LOCATIONS
+	// RIVER OF SOULS
 	vars.enterROS = "levels/cinema_2_dinosoid.map";
 	vars.riverOblivion = "levels/River_Oblivion.map";
 	vars.riverOfSouls4 = "levels/RiverOfSouls_4.map";
 	vars.riverOfSouls8 = "levels/RiverOfSouls_8.map"; 	// location of the totem
 	vars.riverTotem = "levels/River_Totem.map";			// split 7
 	
-		// DEATH MARSHES LOCATIONS
+	// DEATH MARSHES
 	vars.enterDM = "levels/cinema_3_A.map";
 	vars.beforeMarshTotem = "levels/Death_Marsh_8.map";
 	vars.marshTotem = "levels/Marsh_Totem.map"; 		 // split 4
 	vars.marshOblivion = "levels/Marsh_Oblivion.map";
 	vars.deathMarsh3 = "levels/Death_Marsh_3.map";
 	
-		// HIVE OF THE MANTIDS LOCATIONS
+	// HIVE OF THE MANTIDS
 	vars.enterHIVE = "levels/cinema_5_top.map";
 	vars.hiveOblivion = "levels/Hive_Oblivion.map";
 	vars.hive4 = "levels/Hive_4.map";
 	vars.hiveBreedingGrounds = "levels/Hive_8.map";
 	vars.queen = "levels/Queen_Boss.map";
+	vars.hiveTotem = "levels/Hive_Totem.map";			 // split 16
 
-		// LAIR OF THE BLIND ONES LOCATIONS
+	// LAIR OF THE BLIND ONES
 	vars.enterLAIR = "levels/cinema_4_A.map";
 	vars.blindEntrance = "levels/Blind_Lair_1.map";
 	vars.blindOblivion = "levels/Blind_Oblivion.map";
@@ -73,7 +82,7 @@ init
 	vars.blindTotem = "levels/Blind_Totem.map";	
 	vars.blindBoss = "levels/Blind_One_Boss.map";
 
-		// LIGHTSHIP LOCATIONS
+	// LIGHTSHIP
 	vars.enterLS = "levels/cinema_6_E.map";
 	vars.lightOblivion = "levels/Light_Oblivion.map";
 	vars.light2 = "levels/Lightship_2.map";					// where the adon save portal / checkpoint is located
@@ -82,23 +91,16 @@ init
 	vars.primagenCinematic = "levels/cinema_primagen.map";	// plays before and after the fight 
 	vars.light1 = "levels/Lightship_1.map";
 	vars.mother = "levels/Mother_Boss.map";
-	
-		// TOTEM MAPS FOR REFERENCE
-	vars.portTotem = "levels/Port_Totem.map"; 			 // split 2
-	vars.marshTotem = "levels/Marsh_Totem.map"; 		 // split 4
-	vars.riverTotem = "levels/River_Totem.map";			 // split 7
-	vars.hiveTotem = "levels/Hive_Totem.map";			 // split 16
-	vars.blindTotem = "levels/Blind_Totem.map";			 // split 12
 }
 
 start
-{	
-	return (current.level == vars.intro);			 // starts timer on intro cinematic after selecting difficulty
+{
+	// Starts timer on intro cinematic after selecting difficulty
+	return (current.level == vars.intro);			 
 }
 
 split
 {
-
 	if(timer.Run.CategoryName == "100%")
 	{
 		return
@@ -141,7 +143,7 @@ split
 			|| current.level == vars.enterDM && old.level != vars.enterDM 					// splits on entering Death Marshes portal
 			|| current.level == vars.enterROS && old.level != vars.enterROS					// splits on entering RoS portal
 			|| current.level == vars.enterHIVE && old.level != vars.enterHIVE				// splits on entering Hive portal
-			|| current.level == vars.enterLAIR && old.level != vars.enterLAIR		// splits on entering Lair portal
+			|| current.level == vars.enterLAIR && old.level != vars.enterLAIR				// splits on entering Lair portal
 			|| current.level == vars.enterLS && old.level != vars.enterLS					// splits on entering Lightship portal
 			|| current.level == vars.adonSavePortal && old.level == vars.light2				// splits on entering checkpoint from Lightship, backtracking starts at either Village, 3 or breeding
 			|| current.level == vars.primagenBoss && old.level == vars.primagenCinematic	// splits on the final fight beginning #8
@@ -154,24 +156,4 @@ split
 reset
 {
 	 return current.level == vars.intro && old.level != vars.intro;
-}
-
-isLoading
-{
-
-}
-
-gameTime
-{
-
-}
-
-exit
-{
-
-}
-
-update
-{
-
 }
